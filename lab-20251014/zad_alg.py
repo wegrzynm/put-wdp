@@ -38,24 +38,15 @@ def czy_poprawny_pesel(pesel):
     if not pesel.isdigit():
         return False
 
-    rok = int(pesel[0:2])
-    miesiac = int(pesel[2:4])
-    dzien = int(pesel[4:6])
-    suma_kontrolna = int(pesel[10])
-
-    dni_w_miesiacu = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-    if rok % 4 == 0 and (rok % 100 != 0 or rok % 400 == 0):
-        dni_w_miesiacu[2] = 29  # Rok przestępny
-    if dzien < 1 or dzien > dni_w_miesiacu[miesiac]:
-        return False
-
     # Sprawdź sumę kontrolną
-    wagi = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3, 1]
-    obliczona_suma_kontrolna = sum(int(cyfra) * waga for cyfra, waga in zip(pesel[:10], wagi)) % 10
-    if obliczona_suma_kontrolna != 0:
-        obliczona_suma_kontrolna = 10 - obliczona_suma_kontrolna
-
-    return obliczona_suma_kontrolna == suma_kontrolna
+    wagi = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3]
+    i = 0
+    suma_kontrolna = 0
+    for i in range(10):
+        suma_kontrolna += int(pesel[i]) * wagi[i]
+    reszta = suma_kontrolna % 10
+    obliczona_kontrolna = (10 - reszta) % 10
+    return obliczona_kontrolna == int(pesel[10])
 
 pesel = "44051401458"
 print(f"Czy poprawny PESEL: {pesel}?, {czy_poprawny_pesel(pesel=pesel)}")
