@@ -46,20 +46,15 @@ _start:
     ; 4. Zapisz rax do 'wynik'
     
     ; TWÓJ KOD TUTAJ:
-    xor rax, rax
-    mov rcx, 1
-    mov rbx, [multiplier]
-    
+    xor rax, rax                ; wynik = 0
+    mov rcx, [multiplier]       ; licznik = 6
+   
     petla:
-      cmp rcx, rbx
-      jg koniec
-      
-      add rax, rcx
-      inc rcx
-      jmp petla
-      
-    koniec:
-      mov [wynik], rax
+      add rax, [multiplicand]     ; wynik += 7
+      dec rcx                     ; rcx--
+      jnz petla                   ; jeśli rcx != 0, skocz
+    
+    mov [wynik], rax            ; zapisz
     
     ; Exit
     mov rax, 60
