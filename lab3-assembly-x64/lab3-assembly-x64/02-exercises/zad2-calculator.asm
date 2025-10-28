@@ -43,7 +43,9 @@ _start:
     ; 3. Zapisz wynik do 'suma'
     
     ; TWÓJ KOD TUTAJ:
-    
+    mov rax, [a]
+    add rax, [b]
+    mov [suma], rax
     
     
     ; ========================================
@@ -55,7 +57,9 @@ _start:
     ; 3. Zapisz wynik do 'roznica'
     
     ; TWÓJ KOD TUTAJ:
-    
+    mov rax, [c]
+    sub rax, [d]
+    mov [roznica], rax
     
     
     ; Exit

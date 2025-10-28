@@ -46,15 +46,20 @@ _start:
     ; 4. Zapisz rax do 'wynik'
     
     ; TWÓJ KOD TUTAJ:
+    xor rax, rax
+    mov rcx, 1
+    mov rbx, [multiplier]
     
-    
-    
-    
-    
-    
-    
-    
-    
+    petla:
+      cmp rcx, rbx
+      jg koniec
+      
+      add rax, rcx
+      inc rcx
+      jmp petla
+      
+    koniec:
+      mov [wynik], rax
     
     ; Exit
     mov rax, 60

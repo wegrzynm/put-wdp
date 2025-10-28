@@ -43,15 +43,17 @@ _start:
     ; 5. Zapisz rax do 'suma'
     
     ; TWÓJ KOD TUTAJ:
+    xor rax, rax
+    mov rcx, [rozmiar]
+    mov rsi, tablica
     
-    
-    
-    
-    
-    
-    
-    
-    
+    petla:
+      add rax, [rsi]
+      add rsi, 8
+      dec rcx
+      jnz petla
+      
+    mov [suma], rax
     
     
     ; Exit
