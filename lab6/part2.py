@@ -22,10 +22,7 @@ def pulapka_0_3():
     print(f"0.1 + 0.2 = {wynik:.20f}")
     print(f"Czy równe 0.3? {jest_rowne}")
     
-    # WYJAŚNIENIE:
     # Wynik jest False, ponieważ liczby zmiennoprzecinkowe (float) w komputerze są reprezentowane
-    # w systemie dwójkowym. Ułamki 0.1 i 0.2 mają rozwinięcia nieskończone okresowe w systemie dwójkowym,
-    # co prowadzi do błędów zaokrągleń. Suma nie jest idealnie równa reprezentacji liczby 0.3.
     print("# Patrz komentarz w kodzie z wyjaśnieniem.")
 
 # ==== ZADANIE 6: Funkcja is_close ====
@@ -55,16 +52,10 @@ def oblicz_naukowa(a_mantissa, a_exp, b_mantissa, b_exp, operacja):
 
 # ==== ZADANIE 8: Hipotenuza - metoda zła ====
 def hipotenuza_zla(a, b, c):
-    # Dokładnie w tej kolejności (najpierw a^2, potem b^2, potem suma, potem sqrt, na końcu * c).
-    # Ta metoda jest podatna na overflow/underflow przy skrajnych wartościach a i b.
     return c * math.sqrt(a**2 + b**2)
 
 # ==== ZADANIE 9: Hipotenuza - metoda dobra ====
 def hipotenuza_dobra(a, b, c):
-    # wynik = c * a * sqrt(1 + (b/a)^2)
-    # Ta metoda unika bezpośredniego podnoszenia bardzo dużych/małych liczb do kwadratu.
-    # Zakładamy, że a != 0, a dla stabilności najlepiej, gdyby a >= b.
-    # W prostym wzorze z zadania po prostu implementujemy podany wzór.
     return c * a * math.sqrt(1 + (b/a)**2)
 
 # ==== ZADANIE 10: Porównanie metod ====

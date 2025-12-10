@@ -56,22 +56,9 @@ def wielkie_modulo():
     """
     Oblicza 20202020202020202020 % 808.
     """
-    # Python obsługuje dowolnie duże liczby całkowite (arbitrary precision),
-    # więc możemy to policzyć wprost.
     liczba = 20202020202020202020
     dzielnik = 808
     return liczba % dzielnik
-
-    # KOMENTARZ (dla wersji C/C++):
-    # W językach typu C, standardowy int (nawet 64-bitowy unsigned long long) 
-    # ma maksymalną wartość rzędu 1.8e19, a nasza liczba ma 20 cyfr (rzędu 2e19),
-    # więc może nastąpić overflow (zależy od implementacji, uint64 ma limit ~1.84e19).
-    # Aby to policzyć w C dla liczby przekraczającej zakres typu prostego,
-    # trzeba by wczytać liczbę jako string i stosować algorytm dzielenia pisemnego 
-    # (lub schemat Hornera) modulo n:
-    # reszta = 0
-    # dla każdej cyfry c w liczbie:
-    #     reszta = (reszta * 10 + c) % dzielnik
 
 # ==== ZADANIE 15: Obliczanie PI (Leibniz) ====
 def oblicz_pi(epsilon=1e-6):
@@ -81,16 +68,11 @@ def oblicz_pi(epsilon=1e-6):
     """
     suma = 0.0
     n = 0
-    wyraz = 1.0 # Pierwszy wyraz dla n=0: (-1)^0 / (2*0+1) = 1/1 = 1
+    wyraz = 1.0
     
-    # Warunek: "dopóki |kolejny_wyraz| > epsilon"
-    # Tutaj "wyraz" to aktualny wyraz dodawany do sumy.
     while abs(wyraz) > epsilon:
         suma += wyraz
         n += 1
-        # Oblicz kolejny wyraz dla następnego n
-        # (-1)^n / (2n + 1)
-        # Możemy liczyć wprost lub zmieniać znak i mianownik
         mianownik = 2 * n + 1
         wyraz = ((-1)**n) / mianownik
         
@@ -122,7 +104,6 @@ if __name__ == "__main__":
     print(f"Obliczony epsilon: {eps}")
     print(f"1.0 + eps     = {1.0 + eps}")
     print(f"1.0 + eps/2   = {1.0 + eps/2}")
-    # Wskazówka mówi ok 2.22e-16 dla float64
     print()
 
     # Zadanie 14
